@@ -7,12 +7,10 @@ const baseConfig = {
     entry: path.resolve(__dirname, './src/index.js'),
     mode: 'development',
     module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            },
-        ],
+        rules: [{
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+        }, ],
     },
     resolve: {
         extensions: ['.js'],

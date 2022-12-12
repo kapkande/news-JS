@@ -1,17 +1,19 @@
 class Loader {
-    constructor(baseLink, options) {
+    baseLink: string
+    options: object
+    endpoint: string
+    constructor(baseLink:string, options:object) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp({ endpoint, options = {} },
+    getResp(
+        { endpoint, options = {} },
         callback = () => {
             console.error('No callback for GET response');
         }
     ) {
         this.load('GET', endpoint, callback, options);
-
-
     }
 
     errorHandler(res) {
@@ -24,8 +26,8 @@ class Loader {
         return res;
     }
 
-    makeUrl(options, endpoint) {
-        const urlOptions = {...this.options, ...options };
+    makeUrl(options: object, endpoint: string) {
+        const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {
